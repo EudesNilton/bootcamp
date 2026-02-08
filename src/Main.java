@@ -1,4 +1,6 @@
+import br.com.botcamp.desafio.dominio.Bootcamp;
 import br.com.botcamp.desafio.dominio.Curso;
+import br.com.botcamp.desafio.dominio.Dev;
 import br.com.botcamp.desafio.dominio.Mentoria;
 
 import java.time.LocalDate;
@@ -18,11 +20,27 @@ public class Main {
 
         Mentoria mentoria1 = new Mentoria();
         mentoria1.setTitulo("Mentoria Java");
-        mentoria1.setDescrica("Mentoria do curso Java");
+        mentoria1.setDescricao("Mentoria do curso Java");
         mentoria1.setData(LocalDate.now());
 
-        System.out.println(curso1);
-        System.out.println(curso2);
-        System.out.println(mentoria1);
+        Bootcamp bootcamp = new Bootcamp();
+        bootcamp.setNome("Bootcamp Java Developer");
+        bootcamp.setDescricao("Descrição bootcamp Java Developer");
+        bootcamp.getConteudos().add(curso1);
+        bootcamp.getConteudos().add(curso2);
+        bootcamp.getConteudos().add(mentoria1);
+
+        Dev devEudes = new Dev();
+        devEudes.setNome("Eudes");
+        devEudes.inscreverBootcamp(bootcamp);
+        System.out.println("Conteudos inscritos Eudes " + devEudes.getConteudosInscritos());
+        devEudes.progradir();
+        System.out.println("Conteudos conluidos Eudes" + devEudes.getConteudosConcluidos());
+        System.out.println("Xp:" + devEudes.calcularTotalXP());
+
+        Dev devNilton = new Dev();
+        devNilton.setNome("Nilton");
+        System.out.println("Conteudos inscritos Nilton " + devNilton.getConteudosInscritos());
+        System.out.println("Conteudos concluidos Nilton" + devNilton.getConteudosConcluidos());
     }
 }
